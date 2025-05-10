@@ -22,14 +22,6 @@ import java.io.IOException;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 
-
-import java.util.function.Consumer;
-import java.net.URL;
-import java.net.HttpURLConnection;
-import java.io.InputStreamReader;
-import android.os.Handler;
-import android.os.Looper;
-
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -268,37 +260,5 @@ public class Utils {
             ci.next();
         }
         return String.format("%.1f %cB", bytes / 1000.0, ci.current());
-    }
-    public static void checkServerStatus(Consumer<Boolean> callback) {
-        new Thread(() -> {
-            boolean serverStatus;
-            try {
-                URL url = new URL("https://raw.githubusercontent.com/RevTer14/server-status/main/status.json");
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("GET");
-                conn.setRequestProperty("User-Agent", "MyApp");
-
-                int responseCode = conn.getResponseCode();
-                if (responseCode != 200) throw new IOException("HTTP Error: " + responseCode);
-
-                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                StringBuilder response = new StringBuilder();
-                String line;
-                while ((line = br.readLine()) != null) {
-                    response.append(line);
-                }
-                br.close();
-
-                JSONObject json = new JSONObject(response.toString());
-                serverStatus = json.optBoolean("server_status", false); // Gunakan `optBoolean` biar aman
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                serverStatus = false;
-            }
-
-            boolean finalStatus = serverStatus;
-            new Handler(Looper.getMainLooper()).post(() -> callback.accept(finalStatus));
-        }).start();
     }
 }
