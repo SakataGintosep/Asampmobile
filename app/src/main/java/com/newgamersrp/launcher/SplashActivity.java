@@ -88,7 +88,7 @@ public class SplashActivity extends AppCompatActivity implements GLSurfaceView.R
         glSurfaceView = findViewById(R.id.surface);
         glSurfaceView.setRenderer(this);
 
-        Toast.makeText(this, "NewGamers RP v" + BuildConfig.VERSION_NAME, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "SCH SA-MP Launcher v" + BuildConfig.VERSION_NAME, Toast.LENGTH_SHORT).show();
 
         if (arePermissionsGranted()) {
             startApp();
@@ -176,6 +176,7 @@ public class SplashActivity extends AppCompatActivity implements GLSurfaceView.R
             try {
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 intent.putExtra("ahahahahadog", "getrektkid");
+                intent.putExtra("login_success", true); // Tambahkan flag login sukses
                 startActivity(intent);
                 finish();
             } catch (Exception e) {
@@ -278,59 +279,69 @@ public class SplashActivity extends AppCompatActivity implements GLSurfaceView.R
                 UpdateActivity.GameStatus gameStatus = UpdateActivity.GameStatus.valueOf(message.getData().getString("status", ""));
                 Log.i("SplashActivity", "gameStatus = " + gameStatus);
 
-                Log.i("SplashActivity", "Server status: " + Utils.status);
-                if (!Utils.status) {
-                    Log.e("SplashActivity", "Server down!");
-                    try {
-                        new AlertDialog.Builder(SplashActivity.this)
-                                .setTitle("Status:").setMessage("App server is down, make sure you have the latest version of the client. If the problem persists, contact the developer.")
-                                .setPositiveButton("Exit", (dialog, which) -> finish()).setCancelable(false).show();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    if (gameStatus == UpdateActivity.GameStatus.GameUpdateRequired && !Utils.beta_status && !BuildConfig.DEBUG) {
-                        try {
-                            new AlertDialog.Builder(SplashActivity.this)
-                                    .setTitle("Update:").setMessage("Game update required!")
-                                    .setPositiveButton("Update", (dialog, which) -> {
-                                        Intent intent = new Intent(SplashActivity.this, UpdateActivity.class);
-                                        intent.putExtra("mode", UpdateActivity.UpdateMode.GameUpdate.name());
-                                        startActivity(intent);
-                                        finish();
-                                    }).setCancelable(false).show();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    } else if (gameStatus == UpdateActivity.GameStatus.GameFilesUpdateRequired) {
-                        try {
-                            new AlertDialog.Builder(SplashActivity.this)
-                                    .setTitle("Update:").setMessage("Game files update required!")
-                                    .setPositiveButton("Update", (dialog, which) -> {
-                                        Intent intent = new Intent(SplashActivity.this, UpdateActivity.class);
-                                        intent.putExtra("mode", UpdateActivity.UpdateMode.GameUpdate.name());
-                                        startActivity(intent);
-                                        finish();
-                                    }).setNegativeButton("No", (dialog, which) -> {
-                                        if (!Utils.isOnline(SplashActivity.this)) {
-                                            Toast.makeText(SplashActivity.this, "No internet connection!", Toast.LENGTH_LONG).show();
-                                            return;
-                                        }
-
-                                        startMain();
-                                    }).setCancelable(false).show();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        if (!Utils.isOnline(SplashActivity.this)) {
-                            Toast.makeText(SplashActivity.this, "No internet connection!", Toast.LENGTH_LONG).show();
-                            return;
-                        }
-
-                        startMain();
-                    }
-                }
+                    Utils.checkServerStatus(isOnline -> {  
+                    Log.i("SplashActivity", "Server status: " + isOnline);   
+                    if (!isOnline) {  
+                        Log.e("SplashActivity", "Server down!");  
+                        try {  
+                            new AlertDialog.Builder(SplashActivity.this)  
+                                .setTitle("Status:")
+                                .setMessage("EN:\nThe application server is not working, make sure you have the latest client version. If the problem continues, please contact the developer\n\nID:\nServer aplikasi sedang tidak berfungsi, pastikan anda memiliki versi client terbaru. Jika masalah berlanjut, silahkan hubungi developer.")  
+                                .setPositiveButton("Exit", (dialog, which) -> finish())  
+                                .setCancelable(false)  
+                                .show();  
+                        } catch (Exception e) {  
+                            e.printStackTrace();  
+                        }  
+                     } else {  
+                        if (gameStatus == UpdateActivity.GameStatus.GameUpdateRequired && !Utils.beta_status && !BuildConfig.DEBUG) {  
+                            try {  
+                                new AlertDialog.Builder(SplashActivity.this)  
+                                        .setTitle("Update:")
+                                        .setMessage("App Launcher update required!")  
+                                        .setPositiveButton("Update", (dialog, which) -> {  
+                                            Intent intent = new Intent(SplashActivity.this, UpdateActivity.class);  
+                                            intent.putExtra("mode", UpdateActivity.UpdateMode.GameUpdate.name());  
+                                            startActivity(intent);  
+                                            finish();  
+                                        })  
+                                        .setCancelable(false)  
+                                        .show();  
+                            } catch (Exception e) {  
+                                e.printStackTrace();  
+                            }  
+                        } else if (gameStatus == UpdateActivity.GameStatus.GameFilesUpdateRequired) {  
+                            try {  
+                                new AlertDialog.Builder(SplashActivity.this)  
+                                        .setTitle("Warning:")
+                                        .setMessage("EN:\nGame cache are incomplete\nplease update if blackscreen when entering the server.\n\nID:\nGame cache tidak lengkap\nHarap perbarui jika layar hitam saat memasuki server.")  
+                                        .setPositiveButton("Update", (dialog, which) -> {  
+                                            Intent intent = new Intent(SplashActivity.this, UpdateActivity.class);  
+                                            intent.putExtra("mode", UpdateActivity.UpdateMode.GameUpdate.name());  
+                                            startActivity(intent);  
+                                            finish();  
+                                        })  
+                                        .setNegativeButton("No", (dialog, which) -> {  
+                                            if (!Utils.isOnline(SplashActivity.this)) {  
+                                                Toast.makeText(SplashActivity.this, "No internet connection!", Toast.LENGTH_LONG).show();  
+                                                return;  
+                                            }  
+                                            startMain();  
+                                        })  
+                                        .setCancelable(false)  
+                                        .show();  
+                            } catch (Exception e) {  
+                                e.printStackTrace();  
+                            }  
+                        } else {  
+                            if (!Utils.isOnline(SplashActivity.this)) {  
+                                Toast.makeText(SplashActivity.this, "No internet connection!", Toast.LENGTH_LONG).show();  
+                                return;  
+                            }  
+                            startMain();  
+                        }  
+                    }  
+                });
             }
         }
     }

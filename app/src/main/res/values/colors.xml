@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorAccent">#ffffff</color>
-    <color name="colorBackground">#E17474</color>
-    <color name="colorPrimary">#E17474</color>
-    <color name="colorPrimaryDark">#741818</color>
-    <color name="colorTabBackground">#ff000000</color>
-    <color name="colorTabSelected">#ff000000</color>
+    <color name="colorBackground">#74e176</color>
+    <color name="colorPrimary">#74e176</color>
+    <color name="colorPrimaryDark">#237418</color>
+    <color name="colorTabBackground">#00ff0000</color>
+    <color name="colorTabSelected">#00ff0000</color>
     <color name="colorTextDisabled">#7fffffff</color>
     <color name="colorTextHigh">#ffffffff</color>
     <color name="colorTextMedium">#beffffff</color>

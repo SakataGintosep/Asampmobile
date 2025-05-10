@@ -34,7 +34,7 @@ public class ServersPageFragment extends Fragment {
         NavController navController = Navigation.findNavController(view.findViewById(R.id.servers_nav_host_fragment));
 
         Button favorite_servers = view.findViewById(R.id.favorite_servers);
-        //favorite_servers.setOnClickListener(v -> navController.navigate(R.id.favorite_servers_fragment, Bundle.EMPTY, new NavOptions.Builder().setLaunchSingleTop(true).build()));
+        favorite_servers.setOnClickListener(v -> navController.navigate(R.id.favorite_servers_fragment, Bundle.EMPTY, new NavOptions.Builder().setLaunchSingleTop(true).build()));
 
         Button hosted_servers = view.findViewById(R.id.hosted_servers);
         hosted_servers.setOnClickListener(v -> navController.navigate(R.id.hosted_servers_fragment, Bundle.EMPTY, new NavOptions.Builder().setLaunchSingleTop(true).build()));

@@ -98,10 +98,15 @@ public class UpdateService extends Service {
         public void handleMessage(Message msg) {
             mActivityMessenger = msg.replyTo;
             // Log.i("UpdateService", "handleMessage -> " + msg.what);
-            if (msg.what == 0) checkUpdate(); // check update
-            else if (msg.what == 1) updateGameFiles(); // update files
-            else if (msg.what == 2) updateGame(); // update game
-            else if (msg.what == 4) { // get update status
+            if (msg.what == 0) { // check update
+                Log.i("UpdateService", "checkUpdate0");
+                checkUpdate();
+                //checkUpdate();
+            } else if (msg.what == 1) {
+                updateGameFiles(); // update files
+            } else if (msg.what == 2) {
+                updateGame(); // update game
+            } else if (msg.what == 4) { // get update status
                 Message outMsg = Message.obtain(mInHandler, 4);
                 outMsg.getData().putString(NotificationCompat.CATEGORY_STATUS, mUpdateStatus.name());
                 outMsg.replyTo = mMessenger;
@@ -127,6 +132,7 @@ public class UpdateService extends Service {
                 Log.i("UpdateService", "UPDATE_STATUS_GAME");
                 checkUpdate();
             } else if (msg.what == 8) { // check update
+                Log.i("UpdateService", "checkUpdate8");
                 checkUpdate();
             }
         }
@@ -149,12 +155,15 @@ public class UpdateService extends Service {
                     String responseBody = response.body().string();
                     JSONObject data = new JSONObject(responseBody);
 
+                    //Log.i("UpdateService", "Hasil JSON dari server: " + responseBody);
+
                     Utils.status = data.getBoolean("app_server_status");
                     Utils.beta_status = data.getBoolean("app_beta_status");
 
                     mUpdateVersion = data.getString("game_version");
                     mUpdateGameURL = data.getString("game_url");
                     Log.i("UpdateService", "mUpdateVersion = " + mUpdateVersion);
+                    Log.i("UpdateService", "Cek Update: URL = " + mUpdateGameURL);
 
                     mUpdateFiles = new ArrayList<>();
 
@@ -183,6 +192,7 @@ public class UpdateService extends Service {
                         mGameStatus = UpdateActivity.GameStatus.GameFilesUpdateRequired;
                     } else {
                         mGameStatus = UpdateActivity.GameStatus.Updated;
+                        Log.i("UpdateService", "Updated");
                     }
 
                     setUpdateStatus(UpdateActivity.UpdateStatus.Undefined);

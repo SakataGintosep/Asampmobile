@@ -38,8 +38,7 @@
             <RelativeLayout
                 android:id="@+id/samp_version_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone">
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/samp_version_text"
@@ -80,8 +79,7 @@
                 android:fontFamily="@font/gotham"
                 android:text="New Interface"
                 android:textSize="@dimen/_11ssp"
-                android:textStyle="bold"
-                android:visibility="gone" />
+                android:textStyle="bold" />
 
             <com.google.android.material.materialswitch.MaterialSwitch
                 android:id="@+id/systemkeyboard_switch"
@@ -99,8 +97,7 @@
                 android:fontFamily="@font/gotham"
                 android:text="Fast Connect"
                 android:textSize="@dimen/_11ssp"
-                android:textStyle="bold"
-                android:visibility="gone" />
+                android:textStyle="bold" />
 
             <com.google.android.material.materialswitch.MaterialSwitch
                 android:id="@+id/voice_switch"
@@ -230,8 +227,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone">
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/fpslimit_title"
@@ -342,8 +338,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone">
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/fontsize_title"

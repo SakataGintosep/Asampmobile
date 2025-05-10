@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/servers_nav"
-    app:startDestination="@id/hosted_servers_fragment">
+    app:startDestination="@id/favorite_servers_fragment">
 
     <fragment
         android:id="@+id/favorite_servers_fragment"

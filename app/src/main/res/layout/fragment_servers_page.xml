@@ -15,8 +15,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="@dimen/_5sdp"
-            android:visibility="gone"
-            app:checkedButton="@+id/hosted_servers"
+            android:visibility="visible"
+            app:checkedButton="@+id/favorite_servers"
             app:selectionRequired="true"
             app:singleSelection="true">
 

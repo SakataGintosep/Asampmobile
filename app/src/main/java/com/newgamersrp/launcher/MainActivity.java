@@ -17,6 +17,8 @@ import com.newgamersrp.game.R;
 import com.newgamersrp.launcher.utils.SignatureChecker;
 import com.newgamersrp.launcher.utils.Utils;
 
+import androidx.appcompat.app.AlertDialog;
+
 @Obfuscate
 public class MainActivity extends AppCompatActivity {
 
@@ -51,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (getIntent().getBooleanExtra("login_success", false)) {
+            showLoginSuccessPopup();
+        }
+
         ((MaterialTextView) findViewById(R.id.ahahaha)).setText(Utils.copyright);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -79,5 +85,14 @@ public class MainActivity extends AppCompatActivity {
         } else {
             finish();
         }
+    }
+
+    private void showLoginSuccessPopup() {
+        new AlertDialog.Builder(this)
+                .setTitle("Attention")
+                .setMessage("Special thanks to the following people below:\n-Alyn SA-MP Mobile\n-RevTer\n-zkaaa\n-Bang Daxtra\n-VinnnX\n\n*If you steal this client, then you will burn in hell without time limit.")
+                .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
+                .setCancelable(false)
+                .show();
     }
 }
