@@ -22,22 +22,9 @@ import java.io.IOException;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-import java.util.function.Consumer;
-import java.net.URL;
-import java.net.HttpURLConnection;
-import java.io.InputStreamReader;
-import android.os.Handler;
-import android.os.Looper;
-
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
-import com.newgamersrp.game.BuildConfig;
 
 @Obfuscate
 public class Utils {
@@ -46,13 +33,13 @@ public class Utils {
     public static boolean status = false;
     public static boolean beta_status = false;
 
-    public static String copyright = "";
-    public static String website = "https://whatsapp.com/channel/0029Vb1S3SFLikg3vTxC320x";
-    public static String web = "https://raw.githubusercontent.com/RevTer14/server-status/main/";
-    public static String update = web + "release.json";
-    public static String discord = "https://discord.gg/GtJxhs7Y";
-    public static String donat = "https://saweria.co/Daxtra";
-    public static String hostedServersFileStr = web + "server.json";
+    public static String copyright = "NewGamers RP Launcher\nCopyright © Alyn_SAMPMOBILE";
+    public static String website = "https://newgamers.es/";
+    public static String web = "https://mobile.newgamersrp.com/";
+    public static String update = web + "update.json";
+    public static String discord = "https://discord.com/invite/WYxteEA";
+
+    public static String hostedServersFileStr = web + "servers.json";
 
     public static File serversFile = new File(EXTERNAL_DIR, "servers.json");
 
@@ -96,7 +83,7 @@ public class Utils {
             jSONObject.getJSONObject("client").put("settings", new JSONObject());
             jSONObject.getJSONObject("client").getJSONObject("settings").put("nick_name", settings_prefs.getString("nick_name", "samp_player"));
             jSONObject.getJSONObject("client").getJSONObject("settings").put("samp_version", settings_prefs.getInt("samp_version", 0));
-            /*jSONObject.getJSONObject("client").getJSONObject("settings").put("new_interface", settings_prefs.getBoolean("new_interface", false));*/
+            jSONObject.getJSONObject("client").getJSONObject("settings").put("new_interface", settings_prefs.getBoolean("new_interface", false));
             jSONObject.getJSONObject("client").getJSONObject("settings").put("system_keyboard", settings_prefs.getBoolean("system_keyboard", true));
             jSONObject.getJSONObject("client").getJSONObject("settings").put("timestamp", settings_prefs.getBoolean("timestamp", false));
             jSONObject.getJSONObject("client").getJSONObject("settings").put("fullscreen", settings_prefs.getBoolean("fullscreen", false));
@@ -273,37 +260,5 @@ public class Utils {
             ci.next();
         }
         return String.format("%.1f %cB", bytes / 1000.0, ci.current());
-    }
-    public static void checkServerStatus(Consumer<Boolean> callback) {
-        new Thread(() -> {
-            boolean serverStatus;
-            try {
-                URL url = new URL("https://raw.githubusercontent.com/RevTer14/server-status/main/status.json");
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("GET");
-                conn.setRequestProperty("User-Agent", "MyApp");
-
-                int responseCode = conn.getResponseCode();
-                if (responseCode != 200) throw new IOException("HTTP Error: " + responseCode);
-
-                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                StringBuilder response = new StringBuilder();
-                String line;
-                while ((line = br.readLine()) != null) {
-                    response.append(line);
-                }
-                br.close();
-
-                JSONObject json = new JSONObject(response.toString());
-                serverStatus = json.optBoolean("server_status", false); // Gunakan `optBoolean` biar aman
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                serverStatus = false;
-            }
-
-            boolean finalStatus = serverStatus;
-            new Handler(Looper.getMainLooper()).post(() -> callback.accept(finalStatus));
-        }).start();
     }
 }
