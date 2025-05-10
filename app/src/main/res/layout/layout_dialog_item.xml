@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dialog_item"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="@dimen/_141sdp"
+    android:paddingRight="@dimen/_8sdp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/dialog_item_bg"
+        android:layout_width="0.0dip"
+        android:layout_height="0.0dip"
+        android:background="#503030"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/dialog_item_field1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:lines="1"
+        android:maxLines="1"
+        android:paddingTop="@dimen/_3sdp"
+        android:paddingEnd="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_3sdp"
+        android:singleLine="true"
+        android:text="Field1\u0009"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_8sdp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/dialog_item_field2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:maxLines="1"
+        android:paddingTop="@dimen/_3sdp"
+        android:paddingEnd="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_3sdp"
+        android:singleLine="true"
+        android:text="Field2\u0009"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_8sdp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@id/dialog_item_field1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/dialog_item_field3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:maxLines="1"
+        android:paddingTop="@dimen/_3sdp"
+        android:paddingEnd="@dimen/_15sdp"
+        android:paddingBottom="@dimen/_3sdp"
+        android:singleLine="true"
+        android:text="Field3\u0009"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_8sdp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@id/dialog_item_field2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/dialog_item_field4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:maxLines="1"
+        android:paddingTop="@dimen/_3sdp"
+        android:paddingEnd="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_3sdp"
+        android:singleLine="true"
+        android:text="Field4"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_8sdp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@id/dialog_item_field3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

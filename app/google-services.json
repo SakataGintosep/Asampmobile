@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "85891769571",
+    "project_id": "sa-mp-mobile",
+    "storage_bucket": "sa-mp-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85891769571:android:527e952464ed12685611d6",
+        "android_client_info": {
+          "package_name": "com.newgamersrp.game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "85891769571-pl6ipiho4sjc8p7apv2ahqr3blgsq6ck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkbJt-hNDOXYBTB6CaNvU34kp3qcp2qqM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "85891769571-pl6ipiho4sjc8p7apv2ahqr3blgsq6ck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85891769571:android:96d9a860c59805db5611d6",
+        "android_client_info": {
+          "package_name": "ro.samp_mobile.game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "85891769571-pl6ipiho4sjc8p7apv2ahqr3blgsq6ck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkbJt-hNDOXYBTB6CaNvU34kp3qcp2qqM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "85891769571-pl6ipiho4sjc8p7apv2ahqr3blgsq6ck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
