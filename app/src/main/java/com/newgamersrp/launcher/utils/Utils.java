@@ -46,7 +46,7 @@ public class Utils {
     public static boolean status = false;
     public static boolean beta_status = false;
 
-    public static String copyright = "SCH: Underground Launcher\nCopyright © Alyn_SAMPMOBILE";
+    public static String copyright = "CSM: Underground Launcher\nCopyright © CSM_SAMPMOBILE";
     public static String website = "https://whatsapp.com/channel/0029Vb1S3SFLikg3vTxC320x";
     public static String web = "https://raw.githubusercontent.com/RevTer14/server-status/main/";
     public static String update = web + "release.json";
