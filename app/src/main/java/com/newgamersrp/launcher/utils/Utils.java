@@ -277,7 +277,7 @@ public class Utils {
         new Thread(() -> {
             boolean serverStatus;
             try {
-                URL url = new URL("https://raw.githubusercontent.com/RevTer14/server-status/main/status.json");
+                URL url = new URL("https://raw.githubusercontent.com/SakataGintosep/Samp_csm/main/status.json");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
                 conn.setRequestProperty("User-Agent", "MyApp");

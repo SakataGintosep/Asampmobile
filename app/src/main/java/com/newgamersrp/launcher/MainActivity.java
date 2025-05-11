@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     private void showLoginSuccessPopup() {
        new AlertDialog.Builder(this)
                 .setTitle("Attention")
-                .setMessage("Special thanks to the following people below:\n-Alyn SA-MP Mobile\n-RevTer\n-zkaaa\n-Bang Daxtra\n-VinnnX\n\n*If you steal this client, then you will burn in hell without time limit.")
+                .setMessage("Special thanks to the following people below:\n-Alyn SA-MP Mobile\n-RevTer\n-Bang Daxtra\n-Eeykal46\n\n*If you steal this client, then you will burn in hell without time limit.")
                 .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
                 .setCancelable(false)
                 .show();
