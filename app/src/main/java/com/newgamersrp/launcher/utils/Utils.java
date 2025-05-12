@@ -48,7 +48,7 @@ public class Utils {
 
     public static String copyright = "CSM: Underground Launcher\nCopyright © CSM_SAMPMOBILE";
     public static String website = "https://whatsapp.com/channel/0029Vb1S3SFLikg3vTxC320x";
-    public static String web = "https://raw.githubusercontent.com/RevTer14/server-status/main/";
+    public static String web = "https://raw.githubusercontent.com/SakataGintosep/server-status/main/";
     public static String update = web + "release.json";
     public static String discord = "https://discord.gg/zb7GN6bkge";
     public static String hostedServersFileStr = web + "server.json";
