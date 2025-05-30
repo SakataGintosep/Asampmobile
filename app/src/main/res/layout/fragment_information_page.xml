@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8sdp"
         android:fontFamily="@font/gotham"
-        android:text="Hopixel Community"
+        android:text="DAPZZ Community"
         android:textColor="#FFFFFF"
         android:textSize="@dimen/_15ssp"
         app:layout_constraintBottom_toTopOf="@+id/second_title_text"
